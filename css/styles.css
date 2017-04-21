@@ -1,0 +1,14 @@
+html,
+body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  background-color: rgba(0, 0, 0, 0.44);
+}
+
+#mapid {
+  height: 500px;
+  width: 800px;
+  margin: auto;
+}

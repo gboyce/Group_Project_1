@@ -6,27 +6,79 @@
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <script src="http://www.webglearth.com/v2/api.js"></script>
 
-  <link rel="stylesheet" href="css/styles.css"/>
+  <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
+
+
+  <!-- Foundation CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+
+
+  <!-- Main CSS -->
+<link rel="stylesheet" href="css/styles.css"/>
 
 
 	<title>Audiobuzz App</title>
 
 </head>
 <body>
+
+<div class="container">
+
+  <div class="container">
+
+    <div id="slideout">
+      <h2>Music Trivia Question</h2>
+      <div id="question">Which city is it from?</div>
+      <div id="choice0"></div>
+      <div id="choice2"></div>
+      <div id="choice3"></div>
+      <div id="choice4"></div>
+      <div id="hint">Hint will appear here</div>
+      <div id="musicplayer">Music Player Here</div>
+      <button type="button" class="alert button hint">Hint</button>
+
+    </div>
+
+  </div>
+
+<div class="start-button">
+<a href="#" data-reveal-id="theModal"><button class="button secondary start-game">Start Game</button> </a>
+</div>
+
+<div id="theModal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
+<a class="close-reveal-modal" aria-label="Close">&#215;</a>
+ <h1>Game Instructions</h1>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
+  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
+</div>
+
   <!-- Div element that holds the globe -->
 	<div id="mapid"></div>
-<p>testing</p>
-
-
-
-
+  <h1 class="main-title">Audio Buzz</h1>
 
   <!-- Attribution:
   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>' -->
+</div>
 
-  <script src="leaflet.js"></script>
+<!--ZURB Foundation & jQuery-->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.offcanvas.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/plugins/foundation.util.motion.js"></script>
+  <script>$(document).foundation();</script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+
+  <!-- Map Script -->
+  <script src="js/leaflet.js"></script>
+
+
+
 
 </body>
 </html>

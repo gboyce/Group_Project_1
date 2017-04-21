@@ -4,11 +4,89 @@ body {
   height: 100%;
   margin: 0;
   padding: 0;
-  background-color: rgba(0, 0, 0, 0.44);
+  //background-color: rgba(0, 0, 0, 0.44);
+  background: url(../images/audiobuzz-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
 }
 
 #mapid {
-  height: 500px;
-  width: 800px;
+  height: 600px;
+  width: 900px;
+  position: absolute !important;
   margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+}
+
+h2 {
+  color:#fff;
+}
+
+.main-title {
+  font-family: 'Anton', sans-serif;
+  color: #fff;
+  text-align: center;
+  margin-right: 28px;
+  font-size: 4rem;
+  bottom: 0;
+  position: absolute;
+  right: 0;
+}
+
+
+.start-button {
+  position: absolute !important;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 150px;
+  height: 100px;
+  z-index:9;
+}
+
+.cesium-credit-textContainer {
+  display:none;
+}
+
+
+#slideout {
+  background:rgba(0,0,0,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #fff;
+  position: fixed;
+  top: 100px;
+  left: -520px;
+  width: 500px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 35px;
+  z-index: 2;
+}
+#slideout form {
+  display: block;
+  padding: 20px;
+}
+#slideout textarea {
+  display:block;
+  height: 100px;
+  margin-bottom: 6px;
+  width: 250px;
+}
+#slideout.on {
+  left: 0;
+}
+
+.hint {
+  float:right;
 }

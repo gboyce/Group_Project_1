@@ -2,62 +2,95 @@
 <html lang="en-us">
 <meta charset="utf-8">
 <head>
+  <!-- leaflet -->
   <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
   <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <script src="http://www.webglearth.com/v2/api.js"></script>
 
+  <!-- Google fonts -->
   <link href="https://fonts.googleapis.com/css?family=Anton" rel="stylesheet">
-
 
   <!-- Foundation CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
   <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
 
-
   <!-- Main CSS -->
-<link rel="stylesheet" href="css/styles.css"/>
+  <link rel="stylesheet" href="css/styles.css"/>
 
 
-	<title>Audiobuzz App</title>
+	<title>Audio Buzz App</title>
 
 </head>
 <body>
-
+<!-- Container wrapper -->
 <div class="container">
 
-  <div class="container">
+	<!-- Slideout for trivia -->
+	<div class="slideout-container">
+		<div id="slideout">
+			<h2>Music Trivia Question</h2>
+			<div id="question">
+				Which city is it from?
+			</div>
+			<div id="choice0"></div>
+			<div id="choice1"></div>
+			<div id="choice2"></div>
+			<div id="choice3"></div>
+			<div id="hint">Hint will appear here</div>
+			<div id="score">Score will Appear here</div>
+			<div id="musicplayer">
+				Music Player Here
+			</div><button class="alert button hint" type="button">Hint</button>
+		</div>
+	</div>
 
-    <div id="slideout">
-      <h2>Music Trivia Question</h2>
-      <div id="question">Which city is it from?</div>
-      <div id="choice0"></div>
-      <div id="choice2"></div>
-      <div id="choice3"></div>
-      <div id="choice4"></div>
-      <div id="hint">Hint will appear here</div>
-      <div id="musicplayer">Music Player Here</div>
-      <button type="button" class="alert button hint">Hint</button>
+  <!-- Modal for top players -->
+	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal="" id="thePlayersModal" role="dialog">
+		<div class="top-players-container">
+			<div id="top-players">
+				<h2>Top Players</h2>
+				<div id="player0">
+					Player name
+				</div>
+				<div id="player1">
+					Player name
+				</div>
+				<div id="choice2">
+					Player name
+				</div>
+				<div id="choice3">
+					Player name
+				</div>
+				<div id="choice4">
+					Player name
+				</div>
+				<div id="choice5">
+					Player name
+				</div>
+				<div id="choice6">
+					Player name
+				</div><button class="alert button hint" type="button">Restart Game</button>
+			</div>
+		</div>
+	</div>
 
-    </div>
-
-  </div>
-
-<div class="start-button">
-<a href="#" data-reveal-id="theModal"><button class="button secondary start-game">Start Game</button> </a>
-</div>
-
-<div id="theModal" class="reveal-modal small" data-reveal aria-labelledby="modalTitle" aria-hidden="true" role="dialog">
-<a class="close-reveal-modal" aria-label="Close">&#215;</a>
- <h1>Game Instructions</h1>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
-  <p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.<p>
-</div>
+  <!-- Modal for game instructions -->
+	<div class="start-button">
+		<a data-reveal-id="theModal" href="#"><button class="button secondary start-game">Start Game</button></a>
+	</div>
+	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal="" id="theModal" role="dialog">
+		<a aria-label="Close" class="close-reveal-modal">&#215;</a>
+		<h1>Game Instructions</h1>
+  		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+  		<p>Lorem ipsum dolor sit amet, consectetur adipiscing elit.</p>
+	</div>
 
   <!-- Div element that holds the globe -->
 	<div id="mapid"></div>
-  <h1 class="main-title">Audio Buzz</h1>
+	<h1 class="main-title"><img class="logo" width="137" src="images/logo.png"> Audio Buzz</h1>
+</div>
 
   <!-- Attribution:
   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +

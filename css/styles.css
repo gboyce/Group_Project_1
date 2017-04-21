@@ -34,12 +34,11 @@ h2 {
   color: #fff;
   text-align: center;
   margin-right: 28px;
-  font-size: 4rem;
+  font-size: 3.2rem;
   bottom: 0;
   position: absolute;
   right: 0;
 }
-
 
 .start-button {
   position: absolute !important;
@@ -56,7 +55,6 @@ h2 {
 .cesium-credit-textContainer {
   display:none;
 }
-
 
 #slideout {
   background:rgba(0,0,0,0.9);
@@ -89,4 +87,19 @@ h2 {
 
 .hint {
   float:right;
+}
+
+#top-players {
+  background:rgba(0,0,0,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+}
+
+.logo {
+  margin-right: -26px;
+}
+
+button.button.secondary.start-game {
+  text-transform: uppercase;
+  font-size: 12px;
+  font-weight: bold;
 }

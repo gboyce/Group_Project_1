@@ -75,6 +75,7 @@ h2 {
   transition-duration: 0.3s;
   padding: 35px;
   z-index: 2;
+  display: none;
 }
 #slideout form {
   display: block;

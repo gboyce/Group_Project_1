@@ -10,11 +10,18 @@ var i =0;
 
 
 
+
+
+
+
+
+
+
 var locArray = [
-  {lt: 48.8566, lg: 2.35225, loc: "Paris"},//Paris
-  {lt: 39.9042, lg: 116.4074, loc: "Beijing"}, //Beijing,
-  {lt: 55.7558, lg: 37.6173, loc: "Moscow"}, //Moscow,
-  {lt: 40.1728, lg: -74.0059, loc: "New York"}
+  {lt: 48.8566, lg: 2.35225, loc: "Paris", col:'#f511c7'},//Paris
+  {lt: 39.9042, lg: 116.4074, loc: "Beijing", col: '#dfa819'}, //Beijing,
+  {lt: 55.7558, lg: 37.6173, loc: "Moscow", col: '#aa58d0'}, //Moscow,
+  {lt: 40.1728, lg: -74.0059, loc: "New York", col: '#100ce3'}
 ];
 
 //Function to Generate the 3D Map From WebGL Library
@@ -89,7 +96,7 @@ function toRadian(degree) {
     return degree*Math.PI/180;
 };
 
-function lineBetween(B, A) {
+function lineBetween(B, A, x) {
     coords = [];
     var N = 100;
 
@@ -101,7 +108,7 @@ function lineBetween(B, A) {
         coords.push([lt, lg]);
         coords.unshift([lt, lg]);
     }
-    var options = {color: '#10bb4c', opacity: 1, fillColor: '#ad00ff', fillOpacity: 0.1, weight: 3};
+    var options = {color: x, opacity: 1, fillColor: x, fillOpacity: 0.1, weight: 3};
     polygon = WE.polygon(coords, options).addTo(earth);
 
     // marker gets pushed into the marker array
@@ -126,16 +133,15 @@ function lineBetween(B, A) {
 
 function onMapClick(e) {
 
-
     x = locArray[i];
-
+    y = locArray[i].col;
     //creates the line connecting user clickpoint to Houston
     getDistance([e.latitude, e.longitude], [locArray[i].lt, locArray[i].lg]);
     createMarker(e, x);
     marker.bindPopup("<b>Hello world!</b><br>I am " + milesDistance + " miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
     var lineA = {lt: e.latitude, lg:e.longitude};
     var lineB = {lt: locArray[i].lt, lg: locArray[i].lg};
-    lineBetween(lineB, lineA);
+    lineBetween(lineB, lineA, y);
     i++
 }
 

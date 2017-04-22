@@ -30,14 +30,19 @@ h2 {
 }
 
 .main-title {
-  font-family: 'Anton', sans-serif;
+  font-family: 'Raleway', sans-serif;
   color: #fff;
   text-align: center;
   margin-right: 28px;
-  font-size: 3.2rem;
+  font-size:2.6rem;
   bottom: 0;
   position: absolute;
   right: 0;
+  font-weight: 800;
+}
+
+.main-title span {
+  font-weight: 200;
 }
 
 .start-button {
@@ -47,7 +52,7 @@ h2 {
   right: 0;
   bottom: 0;
   left: 0;
-  width: 150px;
+  width: 350px;
   height: 100px;
   z-index:9;
 }
@@ -98,8 +103,14 @@ h2 {
   margin-right: -26px;
 }
 
-button.button.secondary.start-game {
+.start-game {
   text-transform: uppercase;
   font-size: 12px;
   font-weight: bold;
+}
+
+.start-game {
+  background: none !important;
+  color: #fff !important;
+  font-size: 40px !important;
 }

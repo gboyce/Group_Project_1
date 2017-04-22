@@ -9,12 +9,6 @@ var polygon;
 var i =0;
 
 
-var guessesArray = [[48.8566, 2.35225],//Paris
-                    [39.9042, 116.4074],//Beijing
-                    [55.7558, 37.6173],//Moscow
-                    [40.1728, -74.0059]//New York
-
-];
 
 var locArray = [
   {lt: 48.8566, lg: 2.35225, loc: "Paris"},//Paris
@@ -133,12 +127,12 @@ function lineBetween(B, A) {
 function onMapClick(e) {
 
 
-    x = guessesArray[i];
+    x = locArray[i];
 
     //creates the line connecting user clickpoint to Houston
-
+    getDistance([e.latitude, e.longitude], [locArray[i].lt, locArray[i].lg]);
     createMarker(e, x);
-      marker.bindPopup("<b>Hello world!</b><br>I am " + milesDistance + " miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
+    marker.bindPopup("<b>Hello world!</b><br>I am " + milesDistance + " miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
     var lineA = {lt: e.latitude, lg:e.longitude};
     var lineB = {lt: locArray[i].lt, lg: locArray[i].lg};
     lineBetween(lineB, lineA);
@@ -153,8 +147,6 @@ function onMapClick(e) {
 function createMarker(e, x) {
   // marker.removeFrom(earth);
   console.log("Latitude: " +e.latitude + ', ' + " Longitude: " + e.longitude);
-  getDistance([e.latitude, e.longitude], x);
-
 //generates a marker at user mouse click
   marker = WE.marker([e.latitude, e.longitude], 'spotify.png', 32, 32);
 //binds a pop up window to the marker

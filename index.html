@@ -44,7 +44,9 @@
 			<div id="hint">Hint will appear here</div>
 			<div id="score">Score will Appear here</div>
 			<div id="musicplayer">
-				Music Player Here
+				<audio controls id="audio-player" src="#">
+          <p>The force has betrayed us.</p>
+				</audio>
 			</div>
       <div class="row buttons-wrapper">
       <div class="large-12 columns">
@@ -83,7 +85,7 @@
 
   <!-- Modal for game instructions -->
 	<div class="start-button">
-		<a data-reveal-id="instructionsModal" href="#"><button class="button secondary start-game">Start Game</button></a>
+		<a data-reveal-id="instructionsModal" href="#"><button id="start-button" class="button secondary start-game">Start Game</button></a>
 	</div>
 	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal="" id="instructionsModal" role="dialog">
 		<a aria-label="Close" class="close-reveal-modal">&#215;</a>
@@ -125,8 +127,9 @@
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
   <script src="js/firebase.js"></script>
 
-
-
+  <!-- Spotify Script & Spotify API wrapper -->
+  <script src="js/spotify-web-api.js"></script>
+  <script src="js/spotify.js"></script>
 
 
 

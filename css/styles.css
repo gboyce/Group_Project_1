@@ -26,7 +26,7 @@ body {
 }
 
 h2 {
-  color:#fff;
+  color: #EB3D46;
 }
 
 .main-title {
@@ -35,13 +35,27 @@ h2 {
   text-align: center;
   margin-right: 28px;
   font-size:2.6rem;
-  bottom: 0;
+  bottom: 20px;
   position: absolute;
   right: 0;
   font-weight: 800;
+  width:400px;
+}
+
+.main-title-modal {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+  font-size:2.6rem;
+  position: relative;
+  font-weight: 800;
+  margin:0 auto;
 }
 
 .main-title span {
+  font-weight: 200;
+}
+
+.main-title-modal span {
   font-weight: 200;
 }
 
@@ -68,36 +82,66 @@ h2 {
   position: fixed;
   top: 100px;
   left: -520px;
-  width: 500px;
   -webkit-transition-duration: 0.3s;
   -moz-transition-duration: 0.3s;
   -o-transition-duration: 0.3s;
   transition-duration: 0.3s;
   padding: 35px;
   z-index: 2;
-  display: none;
+  //display: none;
 }
-#slideout form {
-  display: block;
-  padding: 20px;
-}
-#slideout textarea {
-  display:block;
-  height: 100px;
-  margin-bottom: 6px;
-  width: 250px;
-}
+
 #slideout.on {
   left: 0;
 }
 
-.hint {
-  float:right;
+.buttons-wrapper {
+  width:100%;
+  text-align: center;
+  margin-top: 50px !important;
 }
 
-#top-players {
+.hint {
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+#slideout-score {
   background:rgba(0,0,0,0.9);
   box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #fff;
+  position: fixed;
+  top: 100px;
+  right: -520px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 35px;
+  z-index: 2;
+  //display: none;
+}
+
+#slideout-score.on {
+  right: 0;
+}
+
+.score-btm, .submit-name {
+font-size: 13px;
+text-transform: uppercase;
+}
+
+#instructionsModal {
+  background:rgba(0,0,0,0.9);
+  color:#fff;
+  text-align: center;
+}
+
+#instructionsModal h1 {
+  color: #EB3D46;
+  font-size: 2rem;
+  margin-top: 20px;
 }
 
 .logo {
@@ -106,12 +150,42 @@ h2 {
 
 .start-game {
   text-transform: uppercase;
-  font-size: 12px;
-  font-weight: bold;
-}
-
-.start-game {
   background: none !important;
   color: #fff !important;
   font-size: 40px !important;
+  font-weight: bold;
+}
+
+#full-member-list {
+  margin-top:20px;
+}
+
+.name-submit {
+  color:#fff;
+}
+
+.no-show {
+  display:none;
+}
+
+.player {
+  border: 1px solid #242424;
+  padding: 9px;
+  margin-top: -1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#score {
+  color: #F8DC82;
+}
+
+.how-to {
+  text-align: right;
+  margin-top: 61px;
+  font-size: 13px;
+}
+
+.how-to a {
+  color:#EB3D46;
 }

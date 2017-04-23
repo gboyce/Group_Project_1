@@ -9,14 +9,6 @@ var polygon;
 var i =0;
 
 
-
-
-
-
-
-
-
-
 var locArray = [
   {lt: 48.8566, lg: 2.35225, loc: "Paris", col:'#f511c7'},//Paris
   {lt: 39.9042, lg: 116.4074, loc: "Beijing", col: '#dfa819'}, //Beijing,
@@ -32,7 +24,7 @@ function initialize() {
   var mapMaxZoom = 8;
   var center = [0, 0];
   //Globe Start Position
-  var options = {zoom: 3, position: center};
+  var options = {zoom: 2.8, position: center};
   earth = new WE.map('mapid', options);
   //Calls the map image layer from the Mapbox url -
   var layer = WE.tileLayer('https://api.mapbox.com/styles/v1/mapbox/satellite-v9/tiles/256/{z}/{x}/{y}?access_token=pk.eyJ1IjoiZHVieWEiLCJhIjoiY2owZDFoMHRsMDAydDMzb2QzZWUycDNiayJ9.VWmWF8th7jYz_fTrJVwUpA', {
@@ -176,14 +168,3 @@ function createMarker(e, x) {
 }
 
 earth.on('dblclick', onMapClick);
-
-
-//hide main start button
-$('.start-button').click(function() {
-    $(this).hide();
-});
-
-//main trivia window panel
-$('.start-game').click(function(){
-  $('#slideout').toggleClass('on');
-});

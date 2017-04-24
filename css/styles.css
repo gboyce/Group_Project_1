@@ -93,6 +93,7 @@ h2 {
 
 #slideout.on {
   left: 0;
+  text-align: center;
 }
 
 .buttons-wrapper {
@@ -177,7 +178,11 @@ text-transform: uppercase;
 }
 
 #score {
-  color: #F8DC82;
+  color: #F84C1E;
+  margin: 15px 0;
+  font-size: 24px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
 }
 
 .how-to {
@@ -188,4 +193,33 @@ text-transform: uppercase;
 
 .how-to a {
   color:#EB3D46;
+}
+
+#audio-player {
+  border: 1px solid #797878;
+  width: 100%;
+}
+
+#album img {
+  width: 250px;
+}
+
+h2.main-guess {
+  font-size: 26px;
+}
+
+.blur {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+-moz-filter: blur(4px);
+-o-filter: blur(4px);
+-ms-filter: blur(4px);
+}
+
+.blur2 {
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+-moz-filter: blur(3px);
+-o-filter: blur(3px);
+-ms-filter: blur(3px);
 }

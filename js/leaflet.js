@@ -7,6 +7,7 @@ var markerArray = [];
 var marker = [];
 var polygon;
 var i =0;
+var score = 0;
 
 
 var locArray = [
@@ -69,16 +70,20 @@ function getDistance(origin, destination) {
     milesDistance = Math.round(metersDistance*0.000621371192);
     console.log(milesDistance);
 
+
+    function addScore() {
+     document.getElementById("score").innerHTML=('Your score: ' + score);
+    }
+
     if (milesDistance > 1000) {
-      alert("More than 1000 miles.");
-    } else if (milesDistance > 500) {
-      alert("More than 500 miles.");
-    } else if (milesDistance > 200) {
-      alert("More than 200 miles");
-    } else if (milesDistance > 100){
-      alert("More than 100 miles!");
-    } else if (milesDistance > 10) {
-      alert("More than 10 miles.")
+      score += 100;
+      addScore();
+    } else if (milesDistance < 500) {
+      score += 500;
+      addScore();
+    } else if (milesDistance < 200) {
+      score += 1000;
+      addScore();
     } else {
       alert("You are here.");
     }

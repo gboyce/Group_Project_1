@@ -19,3 +19,9 @@ $('.score-btm').click(function(){
 
     return false;
 });
+
+//main trivia window panel
+$('.hint').click(function(){
+  $('#album img').removeClass('blur');
+  $('#hint').removeClass('blur2');
+});

@@ -18,7 +18,7 @@ $('#start-button').on('click', function() {
 
 // Select track
   var randomTrack = trackIdArray[Math.floor(Math.random() * 3)];
-
+  var albumCover = $("<img class='blur'>");
 // Call to Spotify Api
   spotifyApi.getTrack(randomTrack, {}, function(err, data) {
 
@@ -37,13 +37,15 @@ $('#start-button').on('click', function() {
       artist_id = data.artists[0].id;
       console.log('Artist ID: ' + artist_id);
       album_art = data.album.images[0].url;
-      console.log('Album Art: ' + album_art);
+      albumCover.attr("src", data.album.images[0].url);
+      //console.log('Album Art: ' + album_art);
       preview_url = data.preview_url;
       console.log('Mp3 Preview: ' + preview_url);
 // Insert mp3 URL into <audio>
       $('#audio-player').attr('src', preview_url);
-  });
 
+  });
+$('#album').append(albumCover);
 // The following needs to run asynchronous
 
   // spotifyApi.getArtist(artist_id, {limit: 1}, function(err, data) {

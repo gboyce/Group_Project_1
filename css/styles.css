@@ -1,0 +1,225 @@
+html,
+body {
+  font-family: Arial, sans-serif;
+  height: 100%;
+  margin: 0;
+  padding: 0;
+  //background-color: rgba(0, 0, 0, 0.44);
+  background: url(../images/audiobuzz-bg.jpg) no-repeat center center fixed;
+  -webkit-background-size: cover;
+  -moz-background-size: cover;
+  -o-background-size: cover;
+  background-size: cover;
+}
+
+#mapid {
+  height: 600px;
+  width: 900px;
+  position: absolute !important;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  z-index: 1;
+
+}
+
+h2 {
+  color: #EB3D46;
+}
+
+.main-title {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+  text-align: center;
+  margin-right: 28px;
+  font-size:2.6rem;
+  bottom: 20px;
+  position: absolute;
+  right: 0;
+  font-weight: 800;
+  width:400px;
+}
+
+.main-title-modal {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+  font-size:2.6rem;
+  position: relative;
+  font-weight: 800;
+  margin:0 auto;
+}
+
+.main-title span {
+  font-weight: 200;
+}
+
+.main-title-modal span {
+  font-weight: 200;
+}
+
+.start-button {
+  position: absolute !important;
+  margin: auto;
+  top: 0;
+  right: 0;
+  bottom: 0;
+  left: 0;
+  width: 350px;
+  height: 100px;
+  z-index:9;
+}
+
+.cesium-credit-textContainer {
+  display:none;
+}
+
+#slideout {
+  background:rgba(0,0,0,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #fff;
+  position: fixed;
+  top: 100px;
+  left: -520px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 35px;
+  z-index: 2;
+  //display: none;
+}
+
+#slideout.on {
+  left: 0;
+  text-align: center;
+}
+
+.buttons-wrapper {
+  width:100%;
+  text-align: center;
+  margin-top: 50px !important;
+}
+
+.hint {
+  text-transform: uppercase;
+  font-size: 13px;
+  margin-left: 5px;
+}
+
+#slideout-score {
+  background:rgba(0,0,0,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #fff;
+  position: fixed;
+  top: 100px;
+  right: -520px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 35px;
+  z-index: 2;
+  //display: none;
+}
+
+#slideout-score.on {
+  right: 0;
+}
+
+.score-btm, .submit-name {
+font-size: 13px;
+text-transform: uppercase;
+}
+
+#instructionsModal {
+  background:rgba(0,0,0,0.9);
+  color:#fff;
+  text-align: center;
+}
+
+#instructionsModal h1 {
+  color: #EB3D46;
+  font-size: 2rem;
+  margin-top: 20px;
+}
+
+.logo {
+  margin-right: -26px;
+}
+
+.start-game {
+  text-transform: uppercase;
+  background: none !important;
+  color: #fff !important;
+  font-size: 40px !important;
+  font-weight: bold;
+}
+
+#full-member-list {
+  margin-top:20px;
+}
+
+.name-submit {
+  color:#fff;
+}
+
+.no-show {
+  display:none;
+}
+
+.player {
+  border: 1px solid #242424;
+  padding: 9px;
+  margin-top: -1px;
+  text-transform: uppercase;
+  text-align: center;
+}
+
+#score {
+  color: #F84C1E;
+  margin: 15px 0;
+  font-size: 24px;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 800;
+}
+
+.how-to {
+  text-align: right;
+  margin-top: 61px;
+  font-size: 13px;
+}
+
+.how-to a {
+  color:#EB3D46;
+}
+
+#audio-player {
+  border: 1px solid #797878;
+  width: 100%;
+}
+
+#album img {
+  width: 250px;
+}
+
+h2.main-guess {
+  font-size: 26px;
+}
+
+.blur {
+  filter: blur(4px);
+  -webkit-filter: blur(4px);
+-moz-filter: blur(4px);
+-o-filter: blur(4px);
+-ms-filter: blur(4px);
+}
+
+.blur2 {
+  filter: blur(3px);
+  -webkit-filter: blur(3px);
+-moz-filter: blur(3px);
+-o-filter: blur(3px);
+-ms-filter: blur(3px);
+}

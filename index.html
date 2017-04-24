@@ -2,48 +2,134 @@
 <html lang="en-us">
 <meta charset="utf-8">
 <head>
-  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"
-    integrity="sha512-07I2e+7D8p6he1SIM+1twR5TIrhUQn9+I6yjqD53JQjFiMf8EtC93ty0/5vJTZGF8aAocvHYNEDJajGdNx1IsQ=="
-    crossorigin=""/>
-  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"
-    integrity="sha512-A7vV8IFfih/D732iSSKi20u/ooOfj/AGehOKq0f4vLT1Zr2Y+RX7C+w8A1gaSasGtRUZpF/NZgzSAu4/Gc41Lg=="
-    crossorigin=""></script>
+  <!-- leaflet -->
+  <link rel="stylesheet" href="https://unpkg.com/leaflet@1.0.3/dist/leaflet.css"/>
+  <script src="https://unpkg.com/leaflet@1.0.3/dist/leaflet.js"></script>
   <script src="http://www.webglearth.com/v2/api.js"></script>
 
+  <!-- Firebase Reference -->
+  <script src="https://www.gstatic.com/firebasejs/live/3.0/firebase.js"></script>
 
-	<title>leaflet tutorials</title>
-	<style type="text/css">
-		html,
-		body {
-			font-family: Arial, sans-serif;
-			height: 100%;
-			margin: 0;
-			padding: 0;
-      background-color: rgba(0, 0, 0, 0.44);
-		}
+  <!-- Google fonts -->
+  <link href="https://fonts.googleapis.com/css?family=Raleway:200,800" rel="stylesheet">
 
-		#mapid {
-			height: 500px;
-      width: 800px;
-      margin: auto;
-		}
-	</style>
+  <!-- Foundation CSS -->
+  <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
+  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+
+  <!-- Font awesome CSS -->
+  <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
+
+  <!-- Main CSS -->
+  <link rel="stylesheet" href="css/styles.css"/>
+
+
+	<title>Audio Buzz App</title>
+
 </head>
 <body>
+<!-- Container wrapper -->
+<div class="container">
+
+	<!-- Slideout for trivia -->
+
+	<div class="slideout-container">
+    <div class="row">
+      <div class="large-12 columns">
+		<div id="slideout">
+			<h2 class="main-guess">Where this music genre originated?</h2>
+			<div id="hint" class="blur2"></div>
+      <div id="album"></div>
+			<div id="score">Your score: 0</div>
+			<div id="musicplayer">
+				<audio controls id="audio-player" src="#">
+          <p>The force has betrayed us.</p>
+				</audio>
+			</div>
+      <div class="row buttons-wrapper">
+      <div class="large-12 columns">
+      <button type="button" class="alert button score-btm">Show Scoreboard</button>
+      <button class="alert button hint" type="button">Hint</button>
+    </div>
+    <div class="large-12 columns how-to">
+    <a data-reveal-id="instructionsModal" href="#">How to Play <i class="fa fa-arrow-right" aria-hidden="true"></i>
+</a>
+  </div>
+  </div>
+  </div>
+    </div>
+		</div>
+	</div>
+
+
+  <!-- Slideout for score -->
+  <div class="slideout-container">
+	<div id="slideout-score">
+		<div class="row">
+			<div class="large-12 columns">
+				<h2>Highest Scores</h2>
+				<div id="full-member-list"></div>
+				<form role="form" class="no-show">
+					<div class="form-group">
+						<label for="name-input" class="name-submit">Submit your name!</label> <input class="form-control" id="name-input" type="text">
+					</div><button class="alert button submit-name" id="add-user" type="submit">Submit</button>
+				</form>
+			</div>
+		</div>
+	</div>
+</div>
+
+
+
+  <!-- Modal for game instructions -->
+	<div class="start-button">
+		<a data-reveal-id="instructionsModal" href="#"><button id="start-button" class="button secondary start-game">Start Game</button></a>
+	</div>
+	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal="" id="instructionsModal" role="dialog">
+		<a aria-label="Close" class="close-reveal-modal">&#215;</a>
+    <div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
+		<h1>How to Play</h1>
+  		<p>Press Play and listen to a song!</p>
+  		<p>Guess which country is the genre music from by clicking on the globe</p>
+  		<p>Earn points based on proximity from the correct country</p>
+  		<p>Beat the highest score!</p>
+	</div>
+
+
+
   <!-- Div element that holds the globe -->
 	<div id="mapid"></div>
-
-
-
-
-
+	<div class="main-title"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
+</div>
 
   <!-- Attribution:
   'Map data &copy; <a href="http://openstreetmap.org">OpenStreetMap</a> contributors, ' +
   '<a href="http://creativecommons.org/licenses/by-sa/2.0/">CC-BY-SA</a>, ' +
   'Imagery © <a href="http://mapbox.com">Mapbox</a>' -->
+</div>
 
-  <script src="leaflet.js"></script>
+<!--ZURB Foundation & jQuery-->
+  <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
+  <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.offcanvas.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
+  <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/plugins/foundation.util.motion.js"></script>
+  <script>$(document).foundation();</script>
+  <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
+
+  <!-- Map Script -->
+  <script src="js/leaflet.js"></script>
+  <script src="js/main.js"></script>
+
+  <!-- Firebase | jQuery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="js/firebase.js"></script>
+
+  <!-- Spotify Script & Spotify API wrapper -->
+  <script src="js/spotify-web-api.js"></script>
+  <script src="js/spotify.js"></script>
+
+
 
 </body>
 </html>

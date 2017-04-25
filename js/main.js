@@ -6,6 +6,8 @@ $('.start-button').click(function() {
 //main trivia window panel
 $('.start-game').click(function(){
   $('#slideout').toggleClass('on');
+
+
 });
 
 //scoreboard window panel
@@ -24,4 +26,11 @@ $('.score-btm').click(function(){
 $('.hint').click(function(){
   $('#album img').removeClass('blur');
   $('#hint').removeClass('blur2');
+});
+
+$(document).keypress(function(e) {
+    if(e.which == 13) {
+      spotifyUpdate();
+    }
+
 });

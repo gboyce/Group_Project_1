@@ -6,15 +6,27 @@ var lineArray = [];
 var markerArray = [];
 var marker = [];
 var polygon;
-var i =0;
 var score = 0;
+var i = 0;
+
+// Instantiate the wrapper
+var spotifyApi = new SpotifyWebApi();
+
+// Set the variables
+
+// var trackId ='';
+// var genre ='';
+var artist ='';
+var artist_id ='';
+var album_art ='';
+var preview_url ='';
 
 
 var locArray = [
-  {lt: 48.8566, lg: 2.35225, loc: "Paris", col:'#f511c7'},//Paris
-  {lt: 39.9042, lg: 116.4074, loc: "Beijing", col: '#dfa819'}, //Beijing,
-  {lt: 55.7558, lg: 37.6173, loc: "Moscow", col: '#aa58d0'}, //Moscow,
-  {lt: 40.1728, lg: -74.0059, loc: "New York", col: '#100ce3'}
+  {lt: 48.8566, lg: 2.35225, loc: "Paris", col:'#f511c7', trackId:'045sp2JToyTaaKyXkGejPy'},//Paris
+  {lt: 39.9042, lg: 116.4074, loc: "Beijing", col: '#dfa819', trackId:'6lEIjrQNwJPecJ7mMXjhjo'}, //Beijing,
+  {lt: 55.7558, lg: 37.6173, loc: "Moscow", col: '#aa58d0', trackId: '1EaKU4dMbesXXd3BrLCtYG'}, //Moscow,
+  {lt: 40.1728, lg: -74.0059, loc: "New York", col: '#100ce3', trackId:'7KXjTSCq5nL1LoYtL7XAwS'}
 ];
 
 //Function to Generate the 3D Map From WebGL Library
@@ -128,10 +140,14 @@ function lineBetween(B, A, x) {
 
 
 
+
 function onMapClick(e) {
 
     x = locArray[i];
     y = locArray[i].col;
+
+
+
     //creates the line connecting user clickpoint to Houston
     getDistance([e.latitude, e.longitude], [locArray[i].lt, locArray[i].lg]);
     createMarker(e, x);
@@ -139,8 +155,14 @@ function onMapClick(e) {
     var lineA = {lt: e.latitude, lg:e.longitude};
     var lineB = {lt: locArray[i].lt, lg: locArray[i].lg};
     lineBetween(lineB, lineA, y);
+
+
     i++
+    if (i>4) {
+      i=0;
+    }
 }
+
 
 
 

@@ -13,13 +13,13 @@ $('.start-game').click(function(){
 //scoreboard window panel
 $('.score-btm').click(function(){
   $('#slideout-score').toggleClass('on');
-  if ($.trim($(this).text()) === 'Show Scoreboard') {
-        $(this).text('Hide Scoreboard');
-    } else {
-        $(this).text('Show Scoreboard');
-    }
+  //if ($.trim($(this).text()) === 'Show Scoreboard') {
+        //$(this).text('Hide Scoreboard');
+    //} else {
+        //$(this).text('Show Scoreboard');
+    //}
 
-    return false;
+    //return false;
 });
 
 
@@ -27,13 +27,13 @@ $('.score-btm').click(function(){
 //scoreboard window panel
 $('.hint').click(function(){
   $('#slideout').toggleClass('on');
-  if ($.trim($(this).text()) === 'Show Hint') {
-        $(this).text('Hide Hint');
-    } else {
-        $(this).text('Show Hint');
-    }
+  //if ($.trim($(this).text()) === 'Show Hint') {
+        //$(this).text('Hide Hint');
+    //} else {
+        //$(this).text('Show Hint');
+    //}
 
-    return false;
+    //return false;
 });
 
 $(document).keypress(function(e) {

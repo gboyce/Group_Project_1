@@ -115,6 +115,7 @@ span#score {
   transition-duration: 0.3s;
   padding: 35px;
   z-index: 2;
+  width:400px;
   //display: none;
 }
 

@@ -28,34 +28,61 @@
 
 </head>
 <body>
+  <nav class="top-bar" data-topbar role="navigation">
+    <ul class="title-area">
+      <li class="name">
+        <h1 class="main-title-top"><a class="logoo" href="#"><!--img class="logo-top" width="50" src="images/logo.png"--><div id="movin-logo">
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+  <span class="bar"></span>
+</div> Audio <span>Buzz</span></a></h1>
+      </li>
+       <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
+      <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
+    </ul>
+
+    <section class="top-bar-section">
+      <!-- Right Nav Section -->
+      <ul class="right">
+        <li><a id="score">Your score: ---</a></li>
+        <li><a id="count">Rounds: 1 of 4</a></li>
+        <li><a class="hint alert" href="#" onclick="document.getElementById('slideout')this.classList.toggle('on')">Show Hint</a></li>
+        <li><a class="score-btm alert" href="#">Show Scoreboard</a></li>
+        <li><a data-reveal-id="instructionsModal" class="howTo" href="#">How to play</a></li>
+      </ul>
+
+      <!-- Left Nav Section -->
+      <ul class="left">
+        <li><a class="play" href="#" onclick="document.getElementById('audio-player').play()"><i class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i></a></li>
+        <li><a class="pause" href="#" onclick="document.getElementById('audio-player').pause()"><i class="fa fa-pause-circle fa-2x" aria-hidden="true"></i></a></li>
+        <li><a class="vol" href="#" onclick="document.getElementById('audio-player').volume += 0.1"><i class="fa fa-volume-up fa-2x" aria-hidden="true"></i></a></li>
+        <li><a class="vol" href="#" onclick="document.getElementById('audio-player').volume -= 0.1"><i class="fa fa-volume-down fa-2x" aria-hidden="true"></i></a></li>
+      </ul>
+    </section>
+  </nav>
+
 <!-- Container wrapper -->
 <div class="container">
-<h3>another test</h3>
 	<!-- Slideout for trivia -->
 
 	<div class="slideout-container">
     <div class="row">
       <div class="large-12 columns">
 		<div id="slideout">
-			<h2 class="main-guess">Where this music genre originated?</h2>
-			<div id="hint" class="blur2"></div>
+			<div id="hint"></div>
+      <div id="genre"></div>
       <div id="album"></div>
-			<div id="score">Your score: 0</div>
 			<div id="musicplayer">
-				<audio controls id="audio-player" src="#">
+				<audio id="audio-player" src="#" autoplay="true">
+
           <p>The force has betrayed us.</p>
 				</audio>
+        <div>
+</div>
 			</div>
-      <div class="row buttons-wrapper">
-      <div class="large-12 columns">
-      <button type="button" class="alert button score-btm">Show Scoreboard</button>
-      <button class="alert button hint" type="button">Hint</button>
-    </div>
-    <div class="large-12 columns how-to">
-    <a data-reveal-id="instructionsModal" href="#">How to Play <i class="fa fa-arrow-right" aria-hidden="true"></i>
-</a>
-  </div>
-  </div>
+
   </div>
     </div>
 		</div>
@@ -81,11 +108,13 @@
 
 
 
-  <!-- Modal for game instructions -->
+  <!-- Start Game -->
 	<div class="start-button">
-		<a data-reveal-id="instructionsModal" href="#"><button id="start-button" class="button secondary start-game">Start Game</button></a>
+		<a href="#"><button id="start-button" class="button secondary start-game">Start Game</button></a>
 	</div>
-	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal="" id="instructionsModal" role="dialog">
+
+    <!-- Game instructions -->
+	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal id="instructionsModal" role="dialog">
 		<a aria-label="Close" class="close-reveal-modal">&#215;</a>
     <div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
 		<h1>How to Play</h1>
@@ -99,6 +128,9 @@
 
   <!-- Div element that holds the globe -->
 	<div id="mapid"></div>
+
+
+  <!-- Game logo -->
 	<div class="main-title"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
 </div>
 
@@ -117,9 +149,7 @@
   <script>$(document).foundation();</script>
   <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
 
-  <!-- Map Script -->
 
-  <script src="js/main.js"></script>
 
   <!-- Firebase | jQuery -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -129,6 +159,10 @@
   <script src="js/spotify-web-api.js"></script>
   <script src="js/spotify.js"></script>
   <script src="js/leaflet.js"></script>
+
+  <!-- Main Script -->
+  <script src="js/main.js"></script>
+
 
 </body>
 </html>

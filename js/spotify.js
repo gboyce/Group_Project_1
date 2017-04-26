@@ -21,7 +21,7 @@ function spotifyUpdate() {
       var randomTrack = locArray[i].trackId;
 
 
-      var albumCover = $("<img class='blur'>");
+      var albumCover = $("<img>");
     // Call to Spotify Api
       spotifyApi.getTrack(randomTrack, {}, function(err, data) {
 
@@ -32,19 +32,19 @@ function spotifyUpdate() {
         else
 
     // Console log data and display paths to objects
-          console.log(data);
+          //console.log(data);
           artist = data.artists[0].name;
-          console.log('Artist: ' + artist);
-    // Insert artist name into Hint
+          //console.log('Artist: ' + artist);
+          // Insert artist name into Hint
           $('#hint').text('Artist: ' + artist);
           artist_id = data.artists[0].id;
-          console.log('Artist ID: ' + artist_id);
+          //console.log('Artist ID: ' + artist_id);
           album_art = data.album.images[0].url;
           albumCover.attr("src", data.album.images[0].url);
           //console.log('Album Art: ' + album_art);
           preview_url = data.preview_url;
-          console.log('Mp3 Preview: ' + preview_url);
-    // Insert mp3 URL into <audio>
+          //console.log('Mp3 Preview: ' + preview_url);
+          // Insert mp3 URL into <audio>
           $('#audio-player').attr('src', preview_url);
 
       });
@@ -57,5 +57,6 @@ function spotifyUpdate() {
         else
           genre = data.genres;
           console.log('Genre: ' + genre);
+          $('#genre').text('Genre: ' + genre);
       });
 }

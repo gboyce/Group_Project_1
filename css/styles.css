@@ -1,6 +1,7 @@
 html,
 body {
-  font-family: Arial, sans-serif;
+  font-family: 'Raleway', sans-serif;
+  font-weight: 200;
   height: 100%;
   margin: 0;
   padding: 0;
@@ -29,6 +30,11 @@ h2 {
   color: #EB3D46;
 }
 
+span#score {
+  background: none !important;
+  color:#fff;
+}
+
 .main-title {
   font-family: 'Raleway', sans-serif;
   color: #fff;
@@ -40,6 +46,27 @@ h2 {
   right: 0;
   font-weight: 800;
   width:400px;
+}
+
+.main-title-top h1 {
+  font-family: 'Raleway', sans-serif;
+  color: #fff;
+  font-size:2.6rem;
+  font-weight: 800;
+
+}
+
+.top-bar .name h1 a{
+  display: inline;
+}
+
+.main-title-top span {
+  font-weight: 200;
+}
+
+.logo-top {
+  margin-left:-8px;
+
 }
 
 .main-title-modal {
@@ -105,7 +132,6 @@ h2 {
 .hint {
   text-transform: uppercase;
   font-size: 13px;
-  margin-left: 5px;
 }
 
 #slideout-score {
@@ -178,11 +204,10 @@ text-transform: uppercase;
 }
 
 #score {
-  color: #F84C1E;
-  margin: 15px 0;
-  font-size: 24px;
+  color: #fff;
   font-family: 'Raleway', sans-serif;
   font-weight: 800;
+  background-color: #3A1C34 !important;
 }
 
 .how-to {
@@ -201,25 +226,99 @@ text-transform: uppercase;
 }
 
 #album img {
-  width: 250px;
+  width: 315px;
+  border: 1px solid #333333;
 }
 
 h2.main-guess {
   font-size: 26px;
 }
 
-.blur {
-  filter: blur(4px);
-  -webkit-filter: blur(4px);
--moz-filter: blur(4px);
--o-filter: blur(4px);
--ms-filter: blur(4px);
+/* top bar navigation */
+.top-bar {
+  background:rgba(0,0,0,0.8);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #fff;
 }
 
-.blur2 {
-  filter: blur(3px);
-  -webkit-filter: blur(3px);
--moz-filter: blur(3px);
--o-filter: blur(3px);
--ms-filter: blur(3px);
+a.play {
+  background-color:#F84C1E !important;
 }
+
+a.play:hover {
+  background-color:#E73B20 !important;
+}
+
+a.pause {
+  background: rgba(0,0,0,0.8) !important;
+  color:#F84C1E !important;
+}
+
+a.vol {
+  background: rgba(0,0,0,0.8) !important;
+  color:#F84C1E !important;
+}
+
+.fa-2x {
+  vertical-align: middle;
+  margin-top: -3px;
+}
+
+.hint, .score-btm, .howTo {
+  background: rgba(0,0,0,0.8) !important;
+}
+
+#count {
+  background: rgba(0,0,0,0.8) !important;
+color: #F84C1E !important;
+}
+
+/*moving logo animation */
+
+#movin-logo {
+  position: relative;
+  display: inline-block;
+  margin-right: 60px;
+}
+
+span.bar {
+  display: block;
+  bottom: 0px;
+  width: 8px;
+  height: 5px;
+  background: #9b59b6;
+  position: absolute;
+  border-radius: 5px;
+  animation: audio-wave 1.5s infinite ease-in-out;
+}
+
+span.bar:nth-child(2) {
+left: 11px;
+animation-delay: 0.2s;
+}
+
+span.bar:nth-child(3) {
+left: 22px;
+animation-delay: 0.4s;
+}
+
+span.bar:nth-child(4) {
+left: 33px;
+animation-delay: 0.6s;
+}
+
+span.bar:nth-child(5) {
+left: 44px;
+animation-delay: 0.8s;
+}
+
+@keyframes audio-wave {
+    0% {height:4px;transform:translateY(0px);background:#D63554;}
+    25% {height:30px;transform:translateY(10px);background:#9b59b6;}
+/*effect is to animate the height of each span from 5px to 30px*/
+/*translateY makes Y axis move down to give the effect that it is growing from the center*/
+
+    50% {height:4px;transform:translateY(0px);background:#EC3D45;}
+    100% {height:4px;transform:translateY(0px);background:#9b59b6;}
+
+  }

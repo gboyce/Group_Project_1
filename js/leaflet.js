@@ -8,6 +8,7 @@ var marker = [];
 var polygon;
 var score = 0;
 var i = 0;
+var counter = 0;
 
 // Instantiate the wrapper
 var spotifyApi = new SpotifyWebApi();
@@ -160,6 +161,7 @@ function onMapClick(e) {
     i++
     if (i>4) {
       i=0;
+
     }
 }
 
@@ -178,17 +180,20 @@ function createMarker(e, x) {
   // marker.bindPopup("<b>Hello world!</b><br>I am " + milesDistance + " miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
 //marker gets pushed into the marker array
   markerArray.push(marker);
-
+  counter++
+  $('#count').text('Rounds: ' + counter + ' of 4');
 // Pushes markerArray through a for loop to display markers on the globe
   for(var i = 0; i < markerArray.length; i++) {
 //addTo function displays the marker on the globe;
     markerArray[i].addTo(earth);
+
     if(markerArray.length > 2) {
 //this removes previous marker from globe and array
       markerArray[0].removeFrom(earth);
       markerArray[1].removeFrom(earth);
 
       markerArray.splice(0,1);
+
     }
   };
 

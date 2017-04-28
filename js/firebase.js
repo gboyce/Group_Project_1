@@ -20,16 +20,16 @@
   $("#add-user").on("click", function(event) {
     event.preventDefault();
 
-    // YOUR TASK!!!
-    // Code in the logic for storing and retrieving the most recent user.
-    // Don't forget to provide initial data to your Firebase database.
     name = $("#name-input").val().trim();
+    finalScore = $("#score").text();
+    console.log('this is your final score: ' + finalScore);
 
 
     // Code for the push
     dataRef.ref().push({
 
-      name: name
+      name: name,
+      finalScore: finalScore
 
     });
   });
@@ -42,7 +42,9 @@
     console.log(childSnapshot.val().name);
 
     // full list of items to the well
-    $("#full-member-list").prepend("<div class='player'><span id='name'> " + childSnapshot.val().name + " </span><span id='score'> " + finalScore + " </span></div>");
+    $("#full-member-list").prepend("<div class='player'><span id='name'> " + childSnapshot.val().name + " </span><span id='score'> " + childSnapshot.val().finalScore + " </span></div>");
+
+    $('.player').attr('myscore', childSnapshot.val().finalScore);
 
   // Handle the errors
   }, function(errorObject) {

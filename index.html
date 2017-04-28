@@ -15,7 +15,7 @@
 
   <!-- Foundation CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
-  <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
 
   <!-- Font awesome CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -46,17 +46,18 @@
     <section class="top-bar-section">
       <!-- Right Nav Section -->
       <ul class="right">
-        <li><a id="score">Your score: ---</a></li>
-        <li><a id="count">Rounds: 1 of 4</a></li>
+        <li><a id="score">Score: ---</a></li>
+        <li><a id="count">Rounds: 1 of 8</a></li>
         <li><a class="hint alert" href="#" onclick="document.getElementById('slideout')this.classList.toggle('on')">Hint</a></li>
         <li><a class="score-btm alert" href="#">Scoreboard</a></li>
-        <li><a data-reveal-id="instructionsModal" class="howTo" href="#">How to play</a></li>
+        <li><a data-reveal-id="instructionsModal" id="revealInstructions" class="howTo" href="#">How to play</a></li>
+        <li><a data-reveal-id="betaversionModal" id="gamesoverModal" class="howTo" href="#">Beta</a></li>
       </ul>
 
       <!-- Left Nav Section -->
       <ul class="left">
         <li><a class="play" href="#" onclick="document.getElementById('audio-player').play()"><i class="fa fa-play-circle-o fa-2x" aria-hidden="true"></i></a></li>
-        <li><a class="pause" href="#" onclick="document.getElementById('audio-player').pause()"><i class="fa fa-pause-circle fa-2x" aria-hidden="true"></i></a></li>
+        <li><a class="pause" id="pause" href="#" onclick="document.getElementById('audio-player').pause()"><i class="fa fa-pause-circle fa-2x" aria-hidden="true"></i></a></li>
         <li><a class="vol" href="#" onclick="document.getElementById('audio-player').volume += 0.1"><i class="fa fa-volume-up fa-2x" aria-hidden="true"></i></a></li>
         <li><a class="vol" href="#" onclick="document.getElementById('audio-player').volume -= 0.1"><i class="fa fa-volume-down fa-2x" aria-hidden="true"></i></a></li>
       </ul>
@@ -96,22 +97,37 @@
 			<div class="large-12 columns">
 				<h2>Highest Scores</h2>
 				<div id="full-member-list"></div>
-				<form role="form" class="no-show">
-					<div class="form-group">
-						<label for="name-input" class="name-submit">Submit your name!</label> <input class="form-control" id="name-input" type="text">
-					</div><button class="alert button submit-name" id="add-user" type="submit">Submit</button>
-				</form>
+
 			</div>
 		</div>
 	</div>
 </div>
 
+<!-- Slideout for results and answers -->
+<div class="slideout-container">
+<div id="slideout-answer">
+  <div class="row">
+    <div class="large-12 columns">
+      <h3>Results</h3>
+        <p id="answer"></p>
+        <p id="distance"></p>
+        <p id="currentScore"></p>
+
+    </div>
+  </div>
+</div>
+</div>
+<a class="answer-btm alert" id="showAnswer" href="#">answer</a>
 
 
   <!-- Start Game -->
 	<div class="start-button">
 		<a href="#"><button id="start-button" class="button secondary start-game">Start Game</button></a>
 	</div>
+
+
+
+
 
     <!-- Game instructions -->
 	<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal id="instructionsModal" role="dialog">
@@ -124,11 +140,48 @@
   		<p>Beat the highest score!</p>
 	</div>
 
+  <!-- Gameover -->
+<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal id="gameoverModal" role="dialog">
+  <a aria-label="Close" class="close-reveal-modal">&#215;</a>
+  <div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
+  <h1>Game Over!</h1>
+    <p>Enter your name to submit your score</p>
+    <form role="form" class="no-show">
+      <div class="form-group">
+        <input class="form-control" id="name-input" type="text">
+      </div><button class="alert button submit-name gameover" id="add-user" type="submit">Submit</button>
+    </form>
+</div>
+
+<!-- Beta Version -->
+<div aria-hidden="true" aria-labelledby="modalTitle" class="reveal-modal small" data-reveal id="betaversionModal" role="dialog">
+<a aria-label="Close" class="close-reveal-modal">&#215;</a>
+<div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
+  <h1>Want to try out our Audio Buzz 2.0 Beta Version? </h1>
+    <p> Send us your name and email, and we will send you a link!</p>
+    <form role="form" class="no-show">
+      <div class="form-group">
+        <label for="name-input2">Name:</label>
+        <input class="form-control" id="name-input2" type="text">
+      </div>
+      <div class="form-group">
+        <label for="email-input">Email:</label>
+        <input class="form-control" id="email-input" type="email">
+      </div>
+      <div class="form-group">
+       <label for="comment-input">How did you hear about us?</label>
+       <textarea class="form-control" id="comment-input" rows="5"></textarea>
+       </div>
+      <button class="alert button submit-name" id="add-user2" type="submit">Submit</button>
+    </form>
+</div>
+
 
 
   <!-- Div element that holds the globe -->
 	<div id="mapid"></div>
-
+  <div class="submit-btm"><a href="#"><button id="submit-answer" class="button">Submit Answer</button></a></div>
+<!--a href="#"><button id="reset" class="button">reset</button></a-->
 
   <!-- Game logo -->
 	<div class="main-title"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
@@ -142,14 +195,15 @@
 
 <!--ZURB Foundation & jQuery-->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.offcanvas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/plugins/foundation.util.motion.js"></script>
   <script>$(document).foundation();</script>
   <script type="text/javascript" src="https://intercom.zurb.com/scripts/zcom.js"></script>
 
-
+  <!-- Main Script -->
+  <script src="js/main.js"></script>
 
   <!-- Firebase | jQuery -->
   <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
@@ -159,10 +213,6 @@
   <script src="js/spotify-web-api.js"></script>
   <script src="js/spotify.js"></script>
   <script src="js/leaflet.js"></script>
-
-  <!-- Main Script -->
-  <script src="js/main.js"></script>
-
 
 </body>
 </html>

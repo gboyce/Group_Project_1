@@ -1,34 +1,23 @@
-//Create a Variable to hold the map
+var locArray = [
+  {lt: 19.076, lg: 72.8777, loc: "Mumbai", col:'#E6CE7A', trackId:'6pjtY01rXw5UMuZvqyFIa5'},//Mumbai - Panjabi MC
+  {lt: 37.5665, lg: 126.9780, loc: "Seoul", col: '#BF10C6', trackId:'2ySKRXKN58cbIlY1cxd80y'}, //Seoul - BTS (korea
+  {lt: 55.7558, lg: 37.6173, loc: "Moscow", col: '#8F060C', trackId: '7kT89itHjfBO3zAb1V4S8w'}, //Moscow,
+  {lt: 40.4168, lg: -3.7038, loc: "Madrid", col: '#FB24C2', trackId:'6oVIbnKNX4qH2NAwt1Y0gt'},//Madrid
+  {lt: 29.7604, lg: -95.3698, loc: "Houston", col: '#E6CE7A', trackId:'6lEIjrQNwJPecJ7mMXjhjo'},//Houston - Lil Troy
+  {lt: 53.3498, lg: -6.2603, loc: "Ireland", col: '#BF10C6', trackId:'03wrmep5c3Dr9JlOXPvFUX'},//Ireland - Celtic Women
+  {lt: 35.6895, lg: 139.6917, loc: "Japan", col: '#8F060C', trackId:'7CoHfAmqnUaU2qa9SGrMrx'},//Japan - Wagakki Band
+  {lt: 30.0444, lg: 31.2357, loc: "Egypt", col: '#FB24C2', trackId:'53Aw9tort7bhCcf1wEBoNv'}//Egypt - Sherine
+];
+
 var earth;
-var milesDistance = 0;
-var coords = [];
-var lineArray = [];
 var markerArray = [];
-var marker = [];
-var polygon;
-var score = 0;
 var i = 0;
+var milesDistance = 0;
+var markerOrigin = [];
+var score = 0;
+var marker2;
 var counter = 0;
 
-// Instantiate the wrapper
-var spotifyApi = new SpotifyWebApi();
-
-// Set the variables
-
-// var trackId ='';
-// var genre ='';
-var artist ='';
-var artist_id ='';
-var album_art ='';
-var preview_url ='';
-
-
-var locArray = [
-  {lt: 48.8566, lg: 2.35225, loc: "Paris", col:'#f511c7', trackId:'045sp2JToyTaaKyXkGejPy'},//Paris
-  {lt: 39.9042, lg: 116.4074, loc: "Beijing", col: '#dfa819', trackId:'6lEIjrQNwJPecJ7mMXjhjo'}, //Beijing,
-  {lt: 55.7558, lg: 37.6173, loc: "Moscow", col: '#aa58d0', trackId: '1EaKU4dMbesXXd3BrLCtYG'}, //Moscow,
-  {lt: 40.1728, lg: -74.0059, loc: "New York", col: '#100ce3', trackId:'7KXjTSCq5nL1LoYtL7XAwS'}
-];
 
 //Function to Generate the 3D Map From WebGL Library
 function initialize() {
@@ -63,8 +52,53 @@ function initialize() {
 initialize();
 
 
+//Creates the player marker and stores
+//markers lat/long in markerOrigin variable
+//for the getDistance and lineBetween functions
+function createMarker(e) {
+  // marker.removeFrom(earth);
+  console.log("Latitude: " +e.latitude + ', ' + " Longitude: " + e.longitude);
+  //generates a marker at user mouse click
+  marker = WE.marker([e.latitude, e.longitude], 'yourguess.png', 100, 100);
+  // marker.bindPopup("<b>Hello world!</b><br>I am  + milesDistance +  miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
+  //binds a pop up window to the marker
+
+  markerOrigin = [e.latitude, e.longitude];
+  // markerArray.push(marker);
+  if (markerArray[0]) {
+      markerArray[0].removeFrom(earth);
+  }
+
+    markerArray = [marker];
+    // Pushes markerArray through a for loop to display markers on the globe
+  // for(var i = 0; i < markerArray.length; i++) {
+    //addTo function displays the marker on the globe;
+    markerArray[0].addTo(earth);
+    // if(markerArray.length > 2) {
+    //   //this removes previous marker from globe and array
+    //
+    //   markerArray[1].removeFrom(earth);
+    //
+    // }
+  // };
+
+}
+
+//Double click to add player marker to the globe.
+//Press Enter to submit marker location and continue game flow
+earth.on('dblclick', createMarker);
+
+//Remove the correct location markers from the globe.
+//Function is called in a setTimout after player submits marker.
+function removeMarker() {
+  marker2.removeFrom(earth);
+  markerArray[0].removeFrom(earth);
+
+}
 //Distance between two markers ----> http://stackoverflow.com/questions/43167417/calculate-distance-between-two-points-in-leaflet
-function getDistance(origin, destination) {
+//Call the lineBetween function
+//Calculate the score based on distance between markers
+function getDistance(origin, destination, col) {
     // Return distance in meters
     var lon1 = toRadian(origin[1]),
         lat1 = toRadian(origin[0]),
@@ -81,32 +115,65 @@ function getDistance(origin, destination) {
 
     // Convert meters to miles ---> http://stackoverflow.com/questions/20674439/how-to-convert-meter-to-miles
     milesDistance = Math.round(metersDistance*0.000621371192);
-    console.log(milesDistance);
+    console.log("The miles distance between points: " + milesDistance);
 
+    //Game marker
+    marker2 = WE.marker([destination[0], destination[1]], 'theanswer.png', 100, 100).addTo(earth);
+
+
+    var lineA = {lt: origin[0], lg:origin[1]};
+    var lineB = {lt: destination[0], lg: destination[1]};
+    lineBetween(lineB, lineA, col);
 
     function addScore() {
-     document.getElementById("score").innerHTML=('Your score: ' + score);
+     document.getElementById("score").innerHTML=('Score: ' + score);
+
     }
 
     if (milesDistance > 1000) {
+      score += 10;
+      addScore();
+    } else if (milesDistance > 900) {
+      score += 25;
+      addScore();
+    } else if (milesDistance > 800) {
+      score += 50;
+      addScore();
+    } else if (milesDistance > 700) {
+      score += 75;
+      addScore();
+    } else if (milesDistance > 600) {
       score += 100;
       addScore();
-    } else if (milesDistance < 500) {
-      score += 500;
+    } else if (milesDistance > 500) {
+      score += 150;
       addScore();
-    } else if (milesDistance < 200) {
-      score += 1000;
+    } else if (milesDistance > 400) {
+      score += 350;
+      addScore();
+    } else if (milesDistance > 300) {
+      score += 650;
+      addScore();
+    } else if (milesDistance > 200) {
+      score += 950;
+      addScore();
+    } else if (milesDistance > 100) {
+      score += 1250;
       addScore();
     } else {
-      alert("You are here.");
+      score+=2500;
+      alert("You chose the exact location.");
     }
 };
-
+//
 function toRadian(degree) {
     return degree*Math.PI/180;
 };
 
-function lineBetween(B, A, x) {
+
+
+//Draws the line between the two markers
+function lineBetween(B, A, col) {
     coords = [];
     var N = 100;
 
@@ -118,85 +185,7 @@ function lineBetween(B, A, x) {
         coords.push([lt, lg]);
         coords.unshift([lt, lg]);
     }
-    var options = {color: x, opacity: 1, fillColor: x, fillOpacity: 0.1, weight: 3};
+    var options = {color: col, opacity: 1, fillColor: col, fillOpacity: 0.1, weight: 5};
     polygon = WE.polygon(coords, options).addTo(earth);
 
-    // marker gets pushed into the marker array
-    lineArray.push(polygon);
-    //displays the marker on the globe
-      for(var i = 0; i < lineArray.length; i++) {
-    //addTo function displays the marker on the globe
-        // lineArray[i].addTo(earth);
-        if(lineArray.length > 2) {
-    //this removes previous marker from globe and array
-          // var destroyLine = lineArray[0];
-          // destroyLine.destroy(earth);
-          // lineArray[1].removeFrom(earth);
-          lineArray.splice(0,1);
-        }
-      }
-
   };
-
-
-
-
-
-function onMapClick(e) {
-
-    x = locArray[i];
-    y = locArray[i].col;
-
-
-
-    //creates the line connecting user clickpoint to Houston
-    getDistance([e.latitude, e.longitude], [locArray[i].lt, locArray[i].lg]);
-    createMarker(e, x);
-    marker.bindPopup("<b>Hello world!</b><br>I am " + milesDistance + " miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
-    var lineA = {lt: e.latitude, lg:e.longitude};
-    var lineB = {lt: locArray[i].lt, lg: locArray[i].lg};
-    lineBetween(lineB, lineA, y);
-
-
-    i++
-    if (i>4) {
-      i=0;
-
-    }
-}
-
-
-
-
-
-
-
-function createMarker(e, x) {
-  // marker.removeFrom(earth);
-  console.log("Latitude: " +e.latitude + ', ' + " Longitude: " + e.longitude);
-//generates a marker at user mouse click
-  marker = WE.marker([e.latitude, e.longitude], 'spotify.png', 32, 32);
-//binds a pop up window to the marker
-  // marker.bindPopup("<b>Hello world!</b><br>I am " + milesDistance + " miles from" + locArray[i].loc +".<br /><span style='font-size:10px;color:#999'></span>", {maxWidth: 150, closeButton: true}).openPopup();
-//marker gets pushed into the marker array
-  markerArray.push(marker);
-  counter++
-  $('#count').text('Rounds: ' + counter + ' of 4');
-// Pushes markerArray through a for loop to display markers on the globe
-  for(var i = 0; i < markerArray.length; i++) {
-//addTo function displays the marker on the globe;
-    markerArray[i].addTo(earth);
-
-    if(markerArray.length > 2) {
-//this removes previous marker from globe and array
-      markerArray[0].removeFrom(earth);
-      markerArray[1].removeFrom(earth);
-
-      markerArray.splice(0,1);
-
-    }
-  };
-
-}
-
-earth.on('dblclick', onMapClick);

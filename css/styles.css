@@ -14,8 +14,8 @@ body {
 }
 
 #mapid {
-  height: 600px;
-  width: 900px;
+  height: 600px;/*change to percentage!*/
+  width: 900px;/*change to percentage!*/
   position: absolute !important;
   margin: auto;
   top: 0;
@@ -26,7 +26,7 @@ body {
 
 }
 
-h2 {
+h3, h2 {
   color: #EB3D46;
 }
 
@@ -43,7 +43,7 @@ span#score {
   font-size:2.6rem;
   bottom: 20px;
   position: absolute;
-  right: 0;
+  left: 0;
   font-weight: 800;
   width:400px;
 }
@@ -155,6 +155,26 @@ span#score {
   right: 0;
 }
 
+#slideout-answer {
+  background:rgba(0,0,0,0.9);
+  box-shadow: 0 0 5px rgba(0,0,0,.3);
+  color: #fff;
+  position: fixed;
+  bottom: 150px;
+  right: -520px;
+  -webkit-transition-duration: 0.3s;
+  -moz-transition-duration: 0.3s;
+  -o-transition-duration: 0.3s;
+  transition-duration: 0.3s;
+  padding: 35px;
+  z-index: 2;
+  //display: none;
+}
+
+#slideout-answer.on {
+  right: 0;
+}
+
 .score-btm, .submit-name {
 font-size: 13px;
 text-transform: uppercase;
@@ -164,13 +184,54 @@ text-transform: uppercase;
   background:rgba(0,0,0,0.9);
   color:#fff;
   text-align: center;
+  margin-top: 170px;
 }
 
 #instructionsModal h1 {
   color: #EB3D46;
-  font-size: 2rem;
+  font-size: 1.5rem;
   margin-top: 20px;
 }
+
+#gameoverModal {
+  background:rgba(0,0,0,0.9);
+  color:#fff;
+  text-align: left;
+  margin-top: 170px;
+}
+
+#gameoverModal h1 {
+  color: #EB3D46;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+#gameoverModal p {
+  color:#fff;
+}
+
+#betaversionModal {
+  background:rgba(0,0,0,0.9);
+  color:#fff;
+  text-align: left;
+  margin-top: 170px;
+}
+
+#betaversionModal h1 {
+  color: #EB3D46;
+  font-size: 1.5rem;
+  margin-top: 20px;
+}
+
+label {
+  color:#fff;
+}
+
+#betaversionModal p {
+  color:#fff;
+}
+
+
 
 .logo {
   margin-right: -26px;
@@ -193,6 +254,10 @@ text-transform: uppercase;
 }
 
 .no-show {
+  //display:none;
+}
+
+.answer-btm {
   display:none;
 }
 
@@ -244,20 +309,31 @@ h2.main-guess {
 
 a.play {
   background-color:#F84C1E !important;
+  transition: all .5s;
 }
 
 a.play:hover {
-  background-color:#E73B20 !important;
+  background-color:#C106FD !important;
 }
 
 a.pause {
   background: rgba(0,0,0,0.8) !important;
   color:#F84C1E !important;
+  transition: all .5s;
+}
+
+a.pause:hover {
+  color:#C106FD !important;
 }
 
 a.vol {
   background: rgba(0,0,0,0.8) !important;
   color:#F84C1E !important;
+  transition: all .5s;
+}
+
+a.vol:hover {
+  color:#C106FD !important;
 }
 
 .fa-2x {
@@ -272,6 +348,24 @@ a.vol {
 #count {
   background: rgba(0,0,0,0.8) !important;
 color: #F84C1E !important;
+}
+
+.submit-btm {
+  margin-right: 28px;
+  bottom: 20px;
+  position: absolute;
+  right: 0;
+  width: 173px;
+}
+
+#submit-answer {
+  background-color: #F84C1E !important;
+  color:#fff;
+  transition: all .5s;
+}
+
+#submit-answer:hover {
+  background-color: #C106FD !important;
 }
 
 /*moving logo animation */

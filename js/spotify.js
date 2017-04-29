@@ -50,7 +50,7 @@ function spotifyUpdate() {
 
 
           counter++
-          $('#count').text('Rounds: ' + counter + ' of 8');
+          $('#count').text('Rounds: ' + counter + ' of 4');
 
       });
 

@@ -44,7 +44,6 @@ $('#submit-answer').click(function() {
 
         //i=0;
         pauseMusic();
-        alert('hey')
         gameOverDude();
 
 

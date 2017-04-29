@@ -3,10 +3,10 @@ var locArray = [
   {lt: 37.5665, lg: 126.9780, loc: "Seoul", col: '#BF10C6', trackId:'2ySKRXKN58cbIlY1cxd80y'}, //Seoul - BTS (korea
   {lt: 55.7558, lg: 37.6173, loc: "Moscow", col: '#8F060C', trackId: '7kT89itHjfBO3zAb1V4S8w'}, //Moscow,
   {lt: 40.4168, lg: -3.7038, loc: "Madrid", col: '#FB24C2', trackId:'6oVIbnKNX4qH2NAwt1Y0gt'},//Madrid
-  {lt: 29.7604, lg: -95.3698, loc: "Houston", col: '#E6CE7A', trackId:'6lEIjrQNwJPecJ7mMXjhjo'},//Houston - Lil Troy
-  {lt: 53.3498, lg: -6.2603, loc: "Ireland", col: '#BF10C6', trackId:'03wrmep5c3Dr9JlOXPvFUX'},//Ireland - Celtic Women
-  {lt: 35.6895, lg: 139.6917, loc: "Japan", col: '#8F060C', trackId:'7CoHfAmqnUaU2qa9SGrMrx'},//Japan - Wagakki Band
-  {lt: 30.0444, lg: 31.2357, loc: "Egypt", col: '#FB24C2', trackId:'53Aw9tort7bhCcf1wEBoNv'}//Egypt - Sherine
+  //{lt: 29.7604, lg: -95.3698, loc: "Houston", col: '#E6CE7A', trackId:'6lEIjrQNwJPecJ7mMXjhjo'},//Houston - Lil Troy
+  //{lt: 53.3498, lg: -6.2603, loc: "Ireland", col: '#BF10C6', trackId:'03wrmep5c3Dr9JlOXPvFUX'},//Ireland - Celtic Women
+  //{lt: 35.6895, lg: 139.6917, loc: "Japan", col: '#8F060C', trackId:'7CoHfAmqnUaU2qa9SGrMrx'},//Japan - Wagakki Band
+  //{lt: 30.0444, lg: 31.2357, loc: "Egypt", col: '#FB24C2', trackId:'53Aw9tort7bhCcf1wEBoNv'}//Egypt - Sherine
 ];
 
 var earth;

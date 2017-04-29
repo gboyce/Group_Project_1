@@ -30,7 +30,8 @@ $('#submit-answer').click(function() {
       //alert("Miles Distance: " + milesDistance + " Score: " + score + "The answer is: " + locArray[i].loc);
       $('#answer').text('Answer: ' + locArray[i].loc);
       $('#distance').text('Distance off by: ' + milesDistance);
-      $('#currentScore').text('You scored ' + score + ' points on this round, keep going!');
+      $('#currentScore').text('You scored ' + score + ' points');
+      $('#final').html(score);
       showMeAnswer();
       i++
 
@@ -39,12 +40,12 @@ $('#submit-answer').click(function() {
       setTimeout(removeMarker, 3000);
 
       //
-      if (i>7) {
+      if (i>3) {
 
         //i=0;
         pauseMusic();
         alert('hey')
-        revealInstructions();
+        gameOverDude();
 
 
       }
@@ -54,8 +55,8 @@ $('#submit-answer').click(function() {
       //}
 
       else {
-      setTimeout(spotifyUpdate, 7000);
-      setTimeout(hideMyAnswer, 7000);
+      setTimeout(spotifyUpdate, 3000);
+      setTimeout(hideMyAnswer, 3000);
 
 
     }
@@ -65,15 +66,28 @@ $('#submit-answer').click(function() {
 
 //due to markers not getting removed we have to reload the page
 $('.gameover').click(function(){
-  window.location.reload(true);
+  setTimeout(function(){
+    location = ''
+  },100)
 
 });
+
+$('.subscribe').click(function() {
+    location.reload();
+});
+
+
 
 //function to pause music after game is done
 function pauseMusic() {
     document.getElementById('pause').click();
 }
 pauseMusic();
+
+//function to pause music after game is done
+function gameOverDude() {
+    document.getElementById('gamesoverModal').click();
+}
 
 //show me the answer after i submit
 function showMeAnswer() {

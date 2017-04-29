@@ -1,17 +1,53 @@
+@keyframes animatedBackground {
+	0% { background-position: 0 0; }
+	100% { background-position: -3000px 0; }
+}
+@-moz-keyframes animatedBackground {
+	0% { background-position: 0 0; }
+	100% { background-position: -3000px 0; }
+}
+@-webkit-keyframes animatedBackground {
+	0% { background-position: 0 0; }
+	100% { background-position: -3000px 0; }
+}
+@-ms-keyframes animatedBackground {
+	0% { background-position: 0 0; }
+	100% { background-position: -3000px 0; }
+}
+@-o-keyframes animatedBackground {
+	0% { background-position: 0 0; }
+	100% { background-position: -3000px 0; }
+}
+
 html,
 body {
   font-family: 'Raleway', sans-serif;
   font-weight: 200;
-  height: 100%;
   margin: 0;
   padding: 0;
-  //background-color: rgba(0, 0, 0, 0.44);
-  background: url(../images/audiobuzz-bg.jpg) no-repeat center center fixed;
+  background-image: url(../images/audiobuzz-bg.jpg);
   -webkit-background-size: cover;
   -moz-background-size: cover;
   -o-background-size: cover;
   background-size: cover;
+
+  width: 100%;
+	height: 100%;
+
+    background-position: 0 0;
+
+  animation: animatedBackground 80s linear infinite;
+	-moz-animation: animatedBackground 80s linear infinite;
+	-webkit-animation: animatedBackground 80s linear infinite;
+	-ms-animation: animatedBackground 80s linear infinite;
+	-o-animation: animatedBackground 80s linear infinite;
 }
+
+
+
+
+
+
 
 #mapid {
   height: 600px;/*change to percentage!*/
@@ -69,6 +105,10 @@ span#score {
 
 }
 
+.finish {
+  display:none;
+}
+
 .main-title-modal {
   font-family: 'Raleway', sans-serif;
   color: #fff;
@@ -76,6 +116,7 @@ span#score {
   position: relative;
   font-weight: 800;
   margin:0 auto;
+  text-align: center;
 }
 
 .main-title span {
@@ -184,7 +225,7 @@ text-transform: uppercase;
   background:rgba(0,0,0,0.9);
   color:#fff;
   text-align: center;
-  margin-top: 170px;
+  margin-top: 140px;
 }
 
 #instructionsModal h1 {
@@ -214,12 +255,11 @@ text-transform: uppercase;
   background:rgba(0,0,0,0.9);
   color:#fff;
   text-align: left;
-  margin-top: 170px;
 }
 
 #betaversionModal h1 {
   color: #EB3D46;
-  font-size: 1.5rem;
+  font-size: 1.3rem;
   margin-top: 20px;
 }
 
@@ -254,7 +294,7 @@ label {
 }
 
 .no-show {
-  //display:none;
+  display:none;
 }
 
 .answer-btm {
@@ -417,3 +457,57 @@ animation-delay: 0.8s;
     100% {height:4px;transform:translateY(0px);background:#9b59b6;}
 
   }
+
+.ij-effect-1 a {
+	position: relative;
+	display: inline-block;
+	//margin: 15px 25px;
+	outline: none;
+	color: #fff;
+	text-decoration: none;
+	text-transform: uppercase;
+	letter-spacing: 1px;
+	font-weight: 400;
+	text-shadow: 0 0 1px rgba(255,255,255,0.3);
+	font-size: 1.35em;
+}
+
+.ij-effect-1 a:hover,
+.ij-effect-1 a:focus {
+	outline: none;
+}
+
+.ij-effect-1 a::before,
+.ij-effect-1 a::after {
+	display: inline-block;
+	opacity: 0;
+	-webkit-transition: -webkit-transform 0.3s, opacity 0.2s;
+	-moz-transition: -moz-transform 0.3s, opacity 0.2s;
+	transition: transform 0.3s, opacity 0.2s;
+}
+
+.ij-effect-1 a::before {
+	margin-right: 10px;
+	content: '[';
+	-webkit-transform: translateX(20px);
+	-moz-transform: translateX(20px);
+	transform: translateX(20px);
+}
+
+.ij-effect-1 a::after {
+	margin-left: 10px;
+	content: ']';
+	-webkit-transform: translateX(-20px);
+	-moz-transform: translateX(-20px);
+	transform: translateX(-20px);
+}
+
+.ij-effect-1 a:hover::before,
+.ij-effect-1 a:hover::after,
+.ij-effect-1 a:focus::before,
+.ij-effect-1 a:focus::after {
+	opacity: 1;
+	-webkit-transform: translateX(0px);
+	-moz-transform: translateX(0px);
+	transform: translateX(0px);
+}

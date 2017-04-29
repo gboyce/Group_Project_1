@@ -15,7 +15,7 @@
 
   <!-- Foundation CSS -->
   <link rel="stylesheet" href="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/css/foundation.min.css">
-  <link href='http://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
+  <link href='https://cdnjs.cloudflare.com/ajax/libs/foundicons/3.0.0/foundation-icons.css' rel='stylesheet' type='text/css'>
 
   <!-- Font awesome CSS -->
   <link href="https://maxcdn.bootstrapcdn.com/font-awesome/4.7.0/css/font-awesome.min.css" rel="stylesheet">
@@ -32,12 +32,12 @@
     <ul class="title-area">
       <li class="name">
         <h1 class="main-title-top"><a class="logoo" href="#"><!--img class="logo-top" width="50" src="images/logo.png"--><div id="movin-logo">
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-  <span class="bar"></span>
-</div> Audio <span>Buzz</span></a></h1>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          <span class="bar"></span>
+          </div> Audio <span>Buzz</span></a></h1>
       </li>
        <!-- Remove the class "menu-icon" to get rid of menu icon. Take out "Menu" to just have icon alone -->
       <li class="toggle-topbar menu-icon"><a href="#"><span>Menu</span></a></li>
@@ -45,13 +45,15 @@
 
     <section class="top-bar-section">
       <!-- Right Nav Section -->
-      <ul class="right">
+      <ul class="right ij-effect-1">
         <li><a id="score">Score: ---</a></li>
-        <li><a id="count">Rounds: 1 of 8</a></li>
+        <li><a id="count">Round: 1 of 4</a></li>
         <li><a class="hint alert" href="#" onclick="document.getElementById('slideout')this.classList.toggle('on')">Hint</a></li>
         <li><a class="score-btm alert" href="#">Scoreboard</a></li>
         <li><a data-reveal-id="instructionsModal" id="revealInstructions" class="howTo" href="#">How to play</a></li>
-        <li><a data-reveal-id="betaversionModal" id="gamesoverModal" class="howTo" href="#">Beta</a></li>
+        <li><a data-reveal-id="betaversionModal" id="betasversionModal" class="howTo" href="#">Beta</a></li>
+        <li class="finish"><a data-reveal-id="gameoverModal" id="gamesoverModal" class="howTo" href="#">Beta</a></li>
+        <li class="gameover"><a class="howTo" href="#">Reset</a></li>
       </ul>
 
       <!-- Left Nav Section -->
@@ -73,7 +75,7 @@
       <div class="large-12 columns">
 		<div id="slideout">
 			<div id="hint"></div>
-      <div id="genre"></div>
+      <!--div id="genre"></div-->
       <div id="album"></div>
 			<div id="musicplayer">
 				<audio id="audio-player" src="#" autoplay="true">
@@ -134,9 +136,10 @@
 		<a aria-label="Close" class="close-reveal-modal">&#215;</a>
     <div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
 		<h1>How to Play</h1>
-  		<p>Press Play and listen to a song!</p>
+  		<p>Listen to the music song playing</p>
   		<p>Guess which country is the genre music from by clicking on the globe</p>
-  		<p>Earn points based on proximity from the correct country</p>
+      <p>Once you guess a location hit submit</p>
+  		<p>Earn points based on proximity from the correct location</p>
   		<p>Beat the highest score!</p>
 	</div>
 
@@ -145,9 +148,10 @@
   <a aria-label="Close" class="close-reveal-modal">&#215;</a>
   <div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
   <h1>Game Over!</h1>
-    <p>Enter your name to submit your score</p>
-    <form role="form" class="no-show">
+    <p>You scored <span id="final"></span> points! Enter your name to submit your score.</p>
+    <form role="form">
       <div class="form-group">
+
         <input class="form-control" id="name-input" type="text">
       </div><button class="alert button submit-name gameover" id="add-user" type="submit">Submit</button>
     </form>
@@ -158,21 +162,21 @@
 <a aria-label="Close" class="close-reveal-modal">&#215;</a>
 <div class="main-title-modal"><img class="logo" width="137" src="images/logo.png"> Audio <span>Buzz</span></div>
   <h1>Want to try out our Audio Buzz 2.0 Beta Version? </h1>
-    <p> Send us your name and email, and we will send you a link!</p>
-    <form role="form" class="no-show">
+    <p> Send us your name and email, and subscribe with Audio Buzz!</p>
+    <form role="form">
       <div class="form-group">
-        <label for="name-input2">Name:</label>
-        <input class="form-control" id="name-input2" type="text">
+        <label for="name-input-subscription">Name:</label>
+        <input class="form-control" id="name-input-subscription" type="text">
       </div>
       <div class="form-group">
-        <label for="email-input">Email:</label>
-        <input class="form-control" id="email-input" type="email">
+        <label for="email-input-subscription">Email:</label>
+        <input class="form-control" id="email-input-subscription" type="email">
       </div>
       <div class="form-group">
-       <label for="comment-input">How did you hear about us?</label>
-       <textarea class="form-control" id="comment-input" rows="5"></textarea>
+       <label for="comment-input-subscription">How did you hear about us?</label>
+       <textarea class="form-control" id="comment-input-subscription" rows="2"></textarea>
        </div>
-      <button class="alert button submit-name" id="add-user2" type="submit">Submit</button>
+      <button class="alert button submit-name subscribe" id="add-user-subscription" type="submit">Submit</button>
     </form>
 </div>
 
@@ -195,7 +199,7 @@
 
 <!--ZURB Foundation & jQuery-->
   <script src="https://code.jquery.com/jquery-2.1.4.min.js"></script>
-  <script src="http://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
+  <script src="https://dhbhdrzi4tiry.cloudfront.net/cdn/sites/foundation.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation/foundation.offcanvas.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/5.5.3/js/foundation.min.js"></script>
   <script src="https://cdnjs.cloudflare.com/ajax/libs/foundation/6.2.3/plugins/foundation.util.motion.js"></script>
@@ -205,14 +209,14 @@
   <!-- Main Script -->
   <script src="js/main.js"></script>
 
-  <!-- Firebase | jQuery -->
-  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
-  <script src="js/firebase.js"></script>
-
   <!-- Spotify Script & Spotify API wrapper -->
   <script src="js/spotify-web-api.js"></script>
   <script src="js/spotify.js"></script>
   <script src="js/leaflet.js"></script>
+
+  <!-- Firebase | jQuery -->
+  <script src="https://code.jquery.com/jquery-3.1.1.min.js"></script>
+  <script src="js/firebase.js"></script>
 
 </body>
 </html>
